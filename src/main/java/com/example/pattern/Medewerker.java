@@ -6,6 +6,14 @@ public class Medewerker implements Observer {
     private String username;
     private String wachtwoord;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getWachtwoord() {
+        return wachtwoord;
+    }
+
     public Medewerker(String username, String wachtwoord) {
         this.username = username;
         this.wachtwoord = wachtwoord;
