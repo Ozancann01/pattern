@@ -15,7 +15,7 @@ public class MenuController {
     @FXML
     private void manageButtonClicked() {
         // Hier kan je de logica implementeren om naar het beheervenster te gaan
-        Main.getProgram().switchScreen(Screens.MENU);
+        Main.getProgram().switchScreen(Screens.BEHEER);
     }
 
     @FXML
