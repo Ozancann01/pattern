@@ -42,89 +42,19 @@ public class DetailController {
         backButtonn.setOnAction(event->{
             backButton();
         });
-
-
+        //retour functie
         retourButton.setOnAction(event -> {
-            // Beëindig de verhuur van het product
-            product.setKlant(null);
-            product.setMedewerker(null);
 
-            // Update de UI
-            klantLabel.setText(null);
-            medewerkerLabel.setText(null);
-            retourButton.setDisable(true);
-            verzekerenCheckbox.setDisable(false);
-            klantNaamTextField.setDisable(false);
-            verhuurButton.setDisable(false);
+            retourButton();
         });
 
         verzekerenCheckbox.setOnAction(event -> {
-            // Update de totale huurprijs op basis van de verzekering status
-            if (verzekerenCheckbox.isSelected()) {
-                double totaleHuurprijs = product.getHuurPrijs() + product.getVerzekeringPrijs();
-                totaleHuurprijsLabel.setText(String.valueOf(totaleHuurprijs));
-            } else {
-                totaleHuurprijsLabel.setText(String.valueOf(product.getHuurPrijs()));
-            }
+            verzekerenCheckbox();
         });
 
         verhuurButton.setOnAction(event -> {
             // Verhuur het product
-            String klantNaam = klantNaamTextField.getText();
-            if (!klantNaam.isBlank()) {
-                Klant nieuweKlant = new Klant(klantNaam);
-                product.setKlant(nieuweKlant);
-
-                // Update de UI
-                klantLabel.setText(nieuweKlant.getNaam());
-
-                retourButton.setDisable(false);
-                verzekerenCheckbox.setDisable(true);
-                klantNaamTextField.setDisable(true);
-                verhuurButton.setDisable(true);
-            }
-        });
-        retourButton.setOnAction(event -> {
-            // Beëindig de verhuur van het product
-            product.setKlant(null);
-            product.setMedewerker(null);
-            // Verwijder mogelijk andere gegevens gerelateerd aan de verhuur
-            // ...
-
-            // Update de UI
-            klantLabel.setText(null);
-            medewerkerLabel.setText(null);
-            retourButton.setDisable(true);
-            verzekerenCheckbox.setDisable(false);
-            klantNaamTextField.setDisable(false);
-            verhuurButton.setDisable(false);
-        });
-
-        verzekerenCheckbox.setOnAction(event -> {
-            // Update de totale huurprijs op basis van de verzekering status
-            if (verzekerenCheckbox.isSelected()) {
-                double totaleHuurprijs = product.getHuurPrijs() + product.getVerzekeringPrijs();
-                totaleHuurprijsLabel.setText(String.valueOf(totaleHuurprijs));
-            } else {
-                totaleHuurprijsLabel.setText(String.valueOf(product.getHuurPrijs()));
-            }
-        });
-
-        verhuurButton.setOnAction(event -> {
-            // Verhuur het product
-            String klantNaam = klantNaamTextField.getText();
-            if (!klantNaam.isBlank()) {
-                Klant nieuweKlant = new Klant(klantNaam);
-                product.setKlant(nieuweKlant);
-
-                // Update de UI
-                klantLabel.setText(nieuweKlant.getNaam());
-
-                retourButton.setDisable(false);
-                verzekerenCheckbox.setDisable(true);
-                klantNaamTextField.setDisable(true);
-                verhuurButton.setDisable(true);
-            }
+           verhuurButton();
         });
 
     }
@@ -166,6 +96,46 @@ public class DetailController {
     private void backButton() {
 
         Main.getProgram().switchScreen(Screens.MENU);
+    }
+
+    private void retourButton(){
+        // Beëindig de verhuur van het product
+        product.setKlant(null);
+        product.setMedewerker(null);
+
+        // Update de UI
+        klantLabel.setText(null);
+        medewerkerLabel.setText(null);
+        retourButton.setDisable(true);
+        verzekerenCheckbox.setDisable(false);
+        klantNaamTextField.setDisable(false);
+        verhuurButton.setDisable(false);
+    }
+
+    private void verzekerenCheckbox(){
+        // Update de totale huurprijs op basis van de verzekering status
+        if (verzekerenCheckbox.isSelected()) {
+            double totaleHuurprijs = product.getHuurPrijs() + product.getVerzekeringPrijs();
+            totaleHuurprijsLabel.setText(String.valueOf(totaleHuurprijs));
+        } else {
+            totaleHuurprijsLabel.setText(String.valueOf(product.getHuurPrijs()));
+        }
+    }
+
+    private void verhuurButton(){
+        String klantNaam = klantNaamTextField.getText();
+        if (!klantNaam.isBlank()) {
+            Klant nieuweKlant = new Klant(klantNaam);
+            product.setKlant(nieuweKlant);
+
+            // Update de UI
+            klantLabel.setText(nieuweKlant.getNaam());
+
+            retourButton.setDisable(false);
+            verzekerenCheckbox.setDisable(true);
+            klantNaamTextField.setDisable(true);
+            verhuurButton.setDisable(true);
+        }
     }
 
 

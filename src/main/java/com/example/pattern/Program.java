@@ -32,12 +32,6 @@ public class Program {
 
     }
 
-    public Medewerker getCurrentUser() {return this.medewerker;}
-    public void setCurrentUser(Medewerker medewerker) {
-        if(medewerker == null) return;
-        this.medewerker = medewerker;
-    }
-
     public void startProgram() throws IOException {
         this.primaryStage.setTitle("Pattern Opdracht");
         new File("saved").mkdir();
