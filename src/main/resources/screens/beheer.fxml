@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox spacing="10" alignment="center" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pattern.Controller.BeheerController">
-    <children>
-        <ListView fx:id="productSoortenListView" prefHeight="300" prefWidth="500" />
-        <Button fx:id="toevoegenButton" text="Toevoegen" onAction="#openToevoegenVenster" />
-    </children>
-</VBox>
+<AnchorPane fx:controller="com.example.pattern.Controller.BeheerController" prefHeight="269.0" prefWidth="498.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ListView fx:id="productSoortenListView" layoutX="46.0" layoutY="32.0" prefHeight="175.0" prefWidth="382.0" />
+      <Button fx:id="toevoegenButton" layoutX="375.0" layoutY="218.0" onAction="#openToevoegenVenster" text="Toevoegen" />
+      <Button fx:id="terugGaan"  onAction="#terugGaan" layoutX="46.0" layoutY="218.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Terug" />
+   </children>
+</AnchorPane>

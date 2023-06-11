@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 
 public class BeheerController {
 
+    public Button terugGaan;
     @FXML
     private ListView<String> productSoortenListView;
 
@@ -25,4 +26,11 @@ public class BeheerController {
     public void openToevoegenVenster() {
         Main.getProgram().switchScreen(Screens.TOEVOEGEN);
     }
+
+    @FXML
+    private void terugGaan() {
+
+        Main.getProgram().switchScreen(Screens.MENU);
+    }
+
 }

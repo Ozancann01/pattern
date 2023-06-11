@@ -1,12 +1,9 @@
 package com.example.pattern;
-
-
 import com.example.pattern.emums.Screens;
 import com.example.pattern.model.Product;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -30,12 +27,10 @@ public class Program {
 
     private Medewerker medewerker;
 
-
     public Program(Stage primaryStage) {
         this.primaryStage = primaryStage;
 
     }
-
 
     public Medewerker getCurrentUser() {return this.medewerker;}
     public void setCurrentUser(Medewerker medewerker) {
@@ -43,25 +38,15 @@ public class Program {
         this.medewerker = medewerker;
     }
 
-
-
-
     public void startProgram() throws IOException {
         this.primaryStage.setTitle("Pattern Opdracht");
-
-
         new File("saved").mkdir();
-
-
         this.switchScreen(Screens.LOGIN);
         this.primaryStage.show();
     }
 
     public void switchScreen(Screens screen) {
         this.currentScreen = screen;
-
-
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/screens/" + screen.getFileName() + ".fxml"));
             this.scene = new Scene(fxmlLoader.load());
@@ -74,8 +59,6 @@ public class Program {
         }
     }
 
-
-
     private void bindWindowSize() {
         Screen screen = Screen.getPrimary();
         Rectangle2D visualBounds = screen.getVisualBounds();
@@ -84,17 +67,11 @@ public class Program {
 
         this.primaryStage.minWidthProperty().bind(scene.widthProperty());
         this.primaryStage.minHeightProperty().bind(scene.heightProperty());
-
-
-
-
     }
 
     private void applyCSS(Screens screen) {
 
         String css = getClass().getResource("/css/" + screen.getFileName() + ".css").toExternalForm();
-
-
         this.scene.getStylesheets().clear();
         this.scene.getStylesheets().addAll( css);
 

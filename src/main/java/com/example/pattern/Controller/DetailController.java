@@ -2,6 +2,7 @@ package com.example.pattern.Controller;
 
 import com.example.pattern.Klant;
 import com.example.pattern.Medewerker;
+import com.example.pattern.emums.Screens;
 import com.example.pattern.model.Product;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,6 +12,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class DetailController {
+
+    @FXML
+    public Button backButtonn;
     @FXML
     private Label merkLabel,huurprijsLabel ,verzekeringLabel,klantLabel,medewerkerLabel,totaleHuurprijsLabel;
     @FXML
@@ -29,18 +33,21 @@ public class DetailController {
 
     @FXML
     public void initialize() {
+
         product = Main.getProgram().getSelectedProduct();
         merkLabel.setText(product.getMerk());
         huurprijsLabel.setText(String.valueOf(product.getHuurPrijs()));
+        verzekeringLabel.setText(String.valueOf(product.getVerzekeringPrijs()));
 
-        // ... Vul de rest van de labels en velden in op basis van de product informatie
+        backButtonn.setOnAction(event->{
+            backButton();
+        });
+
 
         retourButton.setOnAction(event -> {
             // Beëindig de verhuur van het product
             product.setKlant(null);
             product.setMedewerker(null);
-            // Verwijder mogelijk andere gegevens gerelateerd aan de verhuur
-            // ...
 
             // Update de UI
             klantLabel.setText(null);
@@ -68,13 +75,9 @@ public class DetailController {
                 Klant nieuweKlant = new Klant(klantNaam);
                 product.setKlant(nieuweKlant);
 
-                // Voeg hier ook een nieuwe medewerker toe aan het product, als dat nodig is
-                // ...
-
                 // Update de UI
                 klantLabel.setText(nieuweKlant.getNaam());
-                // Update ook het label van de medewerker, als dat nodig is
-                // ...
+
                 retourButton.setDisable(false);
                 verzekerenCheckbox.setDisable(true);
                 klantNaamTextField.setDisable(true);
@@ -114,13 +117,9 @@ public class DetailController {
                 Klant nieuweKlant = new Klant(klantNaam);
                 product.setKlant(nieuweKlant);
 
-                // Voeg hier ook een nieuwe medewerker toe aan het product, als dat nodig is
-                // ...
-
                 // Update de UI
                 klantLabel.setText(nieuweKlant.getNaam());
-                // Update ook het label van de medewerker, als dat nodig is
-                // ...
+
                 retourButton.setDisable(false);
                 verzekerenCheckbox.setDisable(true);
                 klantNaamTextField.setDisable(true);
@@ -163,8 +162,12 @@ public class DetailController {
         huurprijsLabel.setText(String.valueOf(product.getHuurPrijs()));
     }
 
+    @FXML
+    private void backButton() {
+
+        Main.getProgram().switchScreen(Screens.MENU);
+    }
 
 
 }
-
 

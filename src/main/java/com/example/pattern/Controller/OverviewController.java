@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ListCell;
@@ -15,6 +16,8 @@ import javafx.util.Callback;
 
 public class OverviewController {
 
+    @FXML
+    public Button teruGaan;
     @FXML
     private ListView<Product> productListView;
     @FXML
@@ -74,10 +77,27 @@ public class OverviewController {
 
     private void openDetailWindow(Product product) {
         // Save the selected product somewhere it can be accessed by the DetailController
-        Main.getProgram().setSelectedProduct(product);
+        System.out.println(product);
+        if (product!=null){
+            Main.getProgram().setSelectedProduct(product);
 
-        // Switch to the detail screen
-        Main.getProgram().switchScreen(Screens.DETAIL);
+            // Switch to the detail screen
+            Main.getProgram().switchScreen(Screens.DETAIL);
+        }else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Keis eerst de product");
+            alert.setHeaderText(null);
+            alert.setContentText("product is niet gekozen");
+            alert.showAndWait();
+        }
+
+    }
+
+
+    @FXML
+    private void teruGaan() {
+
+        Main.getProgram().switchScreen(Screens.MENU);
     }
 
 }

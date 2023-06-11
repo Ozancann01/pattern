@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox spacing="10" alignment="center" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pattern.Controller.ToevoegenController">
-    <children>
-        <TextField fx:id="merkTextField" promptText="Merk" />
-        <TextField fx:id="prijsTextField" promptText="Prijs" />
-        <ComboBox fx:id="typeComboBox" promptText="Type" />
-
-        <Button fx:id="toevoegenButton" text="Toevoegen" onAction="#toevoegenProduct" />
-    </children>
-</VBox>
+<AnchorPane prefHeight="300.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="merkTextField" layoutX="106.0" layoutY="86.0" promptText="Merk" />
+      <TextField fx:id="prijsTextField" layoutX="106.0" layoutY="134.0" promptText="Prijs" />
+      <ComboBox fx:id="typeComboBox" layoutX="141.0" layoutY="192.0" promptText="Type" />
+      <Button fx:id="toevoegenButton" layoutX="256.0" layoutY="243.0" onAction="#toevoegenProduct" text="Toevoegen" />
+      <Label layoutX="141.0" layoutY="31.0" text="Product maken" />
+      <Button layoutX="62.0" layoutY="243.0" mnemonicParsing="false" text="terug" />
+   </children>
+</AnchorPane>
